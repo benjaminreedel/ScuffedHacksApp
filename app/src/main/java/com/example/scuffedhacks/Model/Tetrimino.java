@@ -27,12 +27,12 @@ public class Tetrimino {
         y2 = tmp_y1;
 
         tmp_x2 = turnAroundX1(y3);
-        tmp_x2 = turnAroundX1(x3);
+        tmp_y2 = turnAroundX1(x3);
         x3 = tmp_x2;
         y3 = tmp_y2;
 
         tmp_x3 = turnAroundX1(y4);
-        tmp_x3 = turnAroundX1(x4);
+        tmp_y3 = turnAroundX1(x4);
         x4 = tmp_x3;
         y4 = tmp_y3;
     }
