@@ -99,7 +99,7 @@ public class Grid {
         Point p3 = new Point(currentPiece.x3, currentPiece.y3);
         Point p4 = new Point(currentPiece.x4, currentPiece.y4);
 
-//        tmpStein.rotate();
+        tmpStein.turnPiece();
 
         Point tmp1 = new Point(tmpStein.x1, tmpStein.y1);
         Point tmp2 = new Point(tmpStein.x2, tmpStein.y2);
@@ -149,7 +149,7 @@ public class Grid {
 
     private void movePiece(Tetrimino currentPiece, int x, int y)   {
         deletePiece(currentPiece);
-//        currentPiece.move(x, y);
+        currentPiece.move(x, y);
         placeTetrimino(currentPiece);
     }
 
@@ -175,7 +175,7 @@ public class Grid {
 
         if(pieceRotateCheck(currentPiece)==true) {
             deletePiece(currentPiece);
-//            currentPiece.rotate();
+            currentPiece.turnPiece();
             placeTetrimino(currentPiece);
         }
         placeTetrimino(currentPiece);
