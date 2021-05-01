@@ -1,18 +1,18 @@
 package com.example.scuffedhacks.Model;
 
+import android.os.Bundle;
+import android.widget.Button;
+
+import com.example.scuffedhacks.R;
+
 import java.lang.*;
 
 public class TetrisPlayer {
 
-    public boolean running = true;
-    long tickrate = 500;
 
-    public void gameloop() throws InterruptedException {
-        while (running) {
-            Thread.sleep(tickrate);
-            //fall function
-        }
-    }
+    Grid grid = new Grid();
+
+
 
     public int addscore(int lines) {
         int _score = 0;
@@ -32,11 +32,5 @@ public class TetrisPlayer {
         }
         return _score;
     }
-
-
-
-
-
-
 
 }

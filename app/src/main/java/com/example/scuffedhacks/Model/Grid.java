@@ -17,7 +17,6 @@ public class Grid {
     public Grid() {
         clearGrid();
         pieces.add(new Tetrimino(rand.nextInt(7)));
-        pieces.add(new Tetrimino(rand.nextInt(7)));
     }
 
     public void clearGrid() {
@@ -37,7 +36,7 @@ public class Grid {
     }
 
     public Tetrimino getCurrentPiece() {
-        return pieces.get(pieces.size() - 2);
+        return pieces.get(pieces.size() - 1);
     }
 
     public Tetrimino getNextPiece() {
@@ -156,24 +155,24 @@ public class Grid {
     private void movePiece(Tetrimino currentPiece, int x, int y)   {
         deletePiece(currentPiece);
         currentPiece.move(x, y);
-        placeTetrimino(currentPiece);
+        //placeTetrimino(currentPiece);
     }
 
     public void moveRight(Tetrimino currentPiece){
         if(canMoveRight(currentPiece)==true) {
-            movePiece(currentPiece, 0, 1);
+            movePiece(currentPiece, 1, 0);
         }
     }
 
     public  void moveLeft(Tetrimino currentPiece){
         if(canMoveLeft(currentPiece)==true) {
-            movePiece(currentPiece, 0, -1);
+            movePiece(currentPiece, -1, 0);
         }
     }
 
     public  void moveDown(Tetrimino currentPiece) {
         if(canMoveDown(currentPiece)==true) {
-            movePiece(currentPiece, 1, 0);
+            movePiece(currentPiece, 0, 1);
         }
     }
 

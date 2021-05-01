@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -14,12 +15,15 @@ import android.widget.Toast;
 
 import com.example.scuffedhacks.Model.Grid;
 import com.example.scuffedhacks.Model.Tetrimino;
+import com.example.scuffedhacks.Model.TetrisPlayer;
 import com.example.scuffedhacks.R;
 
 public class TetrisActivity extends AppCompatActivity {
     private Grid gameGrid;
 
     ImageView spots[][];
+    public boolean running = true;
+    long tickrate = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,12 @@ public class TetrisActivity extends AppCompatActivity {
 
         populateGrid();
         updateGrid();
+        try {
+            gameloop();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private void populateGrid() {
@@ -74,6 +84,15 @@ public class TetrisActivity extends AppCompatActivity {
             }
         }
 
+    }
+
+    public void gameloop() throws InterruptedException {
+        Log.d("error","banana");
+        for (int i = 0; i < 2; i++) {
+            //Thread.sleep(tickrate);
+            gameGrid.moveDown(gameGrid.getCurrentPiece());
+            updateGrid();
+        }
     }
 
     private void updateGrid() {
