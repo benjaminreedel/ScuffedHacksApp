@@ -1,9 +1,30 @@
 package com.example.scuffedhacks.Model;
 
 public class Tetrimino {
+    private int x1;
+    private int x2;
+    private int x3;
+    private int x4;
+    private int y1;
+    private int y2;
+    private int y3;
+    private int y4;
+    public Tetrimino(int pieceNum){
+        pieceGenerator(pieceNum);
+    }
+    public Tetrimino(Tetrimino oldTetrimino){
+        x1 = oldTetrimino.x1;
+        x2 = oldTetrimino.x2;
+        x3 = oldTetrimino.x3;
+        x4 = oldTetrimino.x4;
+        y1 = oldTetrimino.y1;
+        y2 = oldTetrimino.y2;
+        y3 = oldTetrimino.y3;
+        y4 = oldTetrimino.y4;
+    }
     private void pieceGenerator(int pieceNum) {
-        int x1,x2,x3,x4,y1,y2,y3,y4,y;
-        if(pieceNum == 0) {
+        int x1, x2, x3, x4, y1, y2, y3, y4, y;
+        if (pieceNum == 0) {
             //Long-block
             x1 = 5;
             x2 = 5;
@@ -73,6 +94,10 @@ public class Tetrimino {
             y2 = 15;
             y3 = 15;
             y4 = 14;
-}
+        }
     }
+    private void rotate(){
+
+    }
+
 }
