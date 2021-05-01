@@ -15,6 +15,50 @@ public class Tetrimino {
         y3 = oldTetrimino.y3;
         y4 = oldTetrimino.y4;
     }
+
+    public void rotate() {
+        int tmp_x1, tmp_y1;
+        int tmp_x2, tmp_y2;
+        int tmp_x3, tmp_y3;
+
+        tmp_x1 = turnAroundX1(y2);
+        tmp_y1 = turnAroundY1(x2);
+        x2 = tmp_x1;
+        y2 = tmp_y1;
+
+        tmp_x2 = turnAroundX1(y3);
+        tmp_y2 = turnAroundX1(x3);
+        x3 = tmp_x2;
+        y3 = tmp_y2;
+
+        tmp_x3 = turnAroundX1(y4);
+        tmp_y3 = turnAroundX1(x4);
+        x4 = tmp_x3;
+        y4 = tmp_y3;
+    }
+
+    private int turnAroundX1(int y){
+        return x1 + y - y1;
+    }
+
+    private int turnAroundY1(int x){
+        return y1 - x + x1;
+    }
+
+
+    public void move(int x,int y) {
+        if(x != 0){
+            x1+=1;
+            x2+=1;
+            x3+=1;
+            x4+=1;
+        } else {
+            y1+=1;
+            y2+=1;
+            y3+=1;
+            y4+=1;
+        }
+    }
     private void pieceGenerator(int pieceNum) {
 
         if (pieceNum == 0) {
@@ -89,8 +133,6 @@ public class Tetrimino {
             y4 = 14;
         }
     }
-    private void rotate(){
 
-    }
 
 }
