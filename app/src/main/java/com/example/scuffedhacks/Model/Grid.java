@@ -15,6 +15,7 @@ public class Grid {
 
 
     public Grid() {
+        clearGrid();
         //pieces.add(new Tetrimino(rand.nextInt(7)));
     }
 
@@ -28,6 +29,10 @@ public class Grid {
 
     public ArrayList<Tetrimino> getPieces() {
         return pieces;
+    }
+
+    public int[][] getGridBoard() {
+        return gridBoard;
     }
 
     public Tetrimino getCurrentPiece() {
