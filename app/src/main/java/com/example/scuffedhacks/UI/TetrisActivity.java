@@ -35,11 +35,31 @@ public class TetrisActivity extends AppCompatActivity {
 
         populateGrid();
         updateGrid();
-        try {
-            gameloop();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
+        Button btnLoop = findViewById(R.id.btnLoop);
+        btnLoop.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                gameGrid.moveDown(gameGrid.getCurrentPiece());
+//                updateGrid();
+
+                try {
+                    gameloop();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+
+
+
+//        try {
+//            gameloop();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
     }
 
@@ -64,7 +84,7 @@ public class TetrisActivity extends AppCompatActivity {
                 if (gameGrid.getGridBoard()[row][col] == 1) {
                     block.setImageResource(R.drawable.red);
                 } else {
-                    block.setImageResource(R.drawable.purple);
+                    block.setImageResource(R.drawable.filthy_square_vol_2);
                 }
 
 
@@ -88,7 +108,7 @@ public class TetrisActivity extends AppCompatActivity {
 
     public void gameloop() throws InterruptedException {
         Log.d("error","banana");
-        for (int i = 0; i < 2; i++) {
+        for (int i = 0; i < 4; i++) {
             //Thread.sleep(tickrate);
             gameGrid.moveDown(gameGrid.getCurrentPiece());
             updateGrid();
@@ -103,7 +123,7 @@ public class TetrisActivity extends AppCompatActivity {
                     spot.setImageResource(R.drawable.red);
                 } else {
                     ImageView spot = spots[row][col];
-                    spot.setImageResource(R.drawable.purple);
+                    spot.setImageResource(R.drawable.filthy_square_vol_2);
                 }
             }
         }
