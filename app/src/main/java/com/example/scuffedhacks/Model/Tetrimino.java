@@ -3,7 +3,7 @@ package com.example.scuffedhacks.Model;
 public class Tetrimino {
     private void pieceGenerator(int pieceNum) {
         int x1,x2,x3,x4,y1,y2,y3,y4,y;
-        if(int pieceNum == 0) {
+        if(pieceNum == 0) {
             //Long-block
             x1 = 5;
             x2 = 5;
