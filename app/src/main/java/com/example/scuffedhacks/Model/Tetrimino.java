@@ -3,9 +3,11 @@ package com.example.scuffedhacks.Model;
 public class Tetrimino {
     public int x1, x2, x3, x4, y1, y2, y3, y4;
     public Tetrimino(int pieceNum){
+        // Constructor function that takes a number(0-6) and sets the values for a type of tetrimino
         pieceGenerator(pieceNum);
     }
     public Tetrimino(Tetrimino oldTetrimino){
+        // Takes a Tetrimino and sets another one to have identical x and y coordinates
         x1 = oldTetrimino.x1;
         x2 = oldTetrimino.x2;
         x3 = oldTetrimino.x3;
@@ -17,6 +19,7 @@ public class Tetrimino {
     }
 
     public void rotate() {
+        // Rotates a tetrimino based on the input given
         int tmp_x1, tmp_y1;
         int tmp_x2, tmp_y2;
         int tmp_x3, tmp_y3;
@@ -47,20 +50,21 @@ public class Tetrimino {
 
 
     public void move(int x,int y) {
+        // Adds the x or y value given to all x or y values
         if(x != 0){
-            x1+=1;
-            x2+=1;
-            x3+=1;
-            x4+=1;
+            x1+=x;
+            x2+=x;
+            x3+=x;
+            x4+=x;
         } else {
-            y1+=1;
-            y2+=1;
-            y3+=1;
-            y4+=1;
+            y1+=y;
+            y2+=y;
+            y3+=y;
+            y4+=y;
         }
     }
     private void pieceGenerator(int pieceNum) {
-
+        // Generates a piece based on a given number
         if (pieceNum == 0) {
             //Long-block
             x1 = 5;
