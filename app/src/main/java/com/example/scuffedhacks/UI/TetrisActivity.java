@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -36,18 +37,18 @@ public class TetrisActivity extends AppCompatActivity {
         populateGrid();
         updateGrid();
 
-        Button btnLoop = findViewById(R.id.btnLoop);
+        ImageButton btnLoop = findViewById(R.id.btnRotate);
         btnLoop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                gameGrid.moveDown(gameGrid.getCurrentPiece());
-//                updateGrid();
+                gameGrid.moveDown(gameGrid.getCurrentPiece());
+                updateGrid();
 
-                try {
-                    gameloop();
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+//                try {
+//                    gameloop();
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
 
             }
         });

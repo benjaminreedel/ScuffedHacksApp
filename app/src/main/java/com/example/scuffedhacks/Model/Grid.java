@@ -44,17 +44,17 @@ public class Grid {
     }
 
     private void placeTetrimino(Tetrimino currentTetrimino) {
-        gridBoard[currentTetrimino.x1][currentTetrimino.y1] = 1;
-        gridBoard[currentTetrimino.x2][currentTetrimino.y2] = 1;
-        gridBoard[currentTetrimino.x3][currentTetrimino.y3] = 1;
-        gridBoard[currentTetrimino.x4][currentTetrimino.y4] = 1;
+        gridBoard[currentTetrimino.y1][currentTetrimino.x1] = 1;
+        gridBoard[currentTetrimino.y2][currentTetrimino.x2] = 1;
+        gridBoard[currentTetrimino.y3][currentTetrimino.x3] = 1;
+        gridBoard[currentTetrimino.y4][currentTetrimino.x4] = 1;
     }
 
     private void deletePiece(Tetrimino currentTetrimino) {
-        gridBoard[currentTetrimino.x1][currentTetrimino.y1] = 0;
-        gridBoard[currentTetrimino.x2][currentTetrimino.y2] = 0;
-        gridBoard[currentTetrimino.x3][currentTetrimino.y3] = 0;
-        gridBoard[currentTetrimino.x4][currentTetrimino.y4] = 0;
+        gridBoard[currentTetrimino.y1][currentTetrimino.x1] = 0;
+        gridBoard[currentTetrimino.y2][currentTetrimino.x2] = 0;
+        gridBoard[currentTetrimino.y3][currentTetrimino.x3] = 0;
+        gridBoard[currentTetrimino.y4][currentTetrimino.x4] = 0;
     }
 
     private boolean pieceMoveCheck(Tetrimino currentPiece, int x, int y) {
@@ -81,7 +81,7 @@ public class Grid {
         // Does this copied piece stay within the boundaries
         for(Point p : tmpPieceCoordinates ) {
 
-            if(p.x < gridHeight && p.y >= 0 && p.y < gridWidth && gridBoard[p.x][p.y] == 0) {
+            if(p.x < gridWidth && p.y >= 0 && p.y < gridHeight && gridBoard[p.y][p.x] == 0) {
                 tmp++;
             }
 
@@ -118,7 +118,7 @@ public class Grid {
 
         for(Point p : tmpPieceCoordinates  ) {
 
-            if(p.x < gridHeight && p.x >= 0 && p.y >= 0 && p.y < gridWidth && gridBoard[p.x][p.y] == 0) {
+            if(p.x < gridWidth && p.x >= 0 && p.y >= 0 && p.y < gridHeight && gridBoard[p.y][p.x] == 0) {
                 tmp++;
             }
 
@@ -131,21 +131,21 @@ public class Grid {
     }
 
     private  boolean canMoveLeft(Tetrimino currentPiece) {
-        if(pieceMoveCheck(currentPiece, 0, -1) == true) {
+        if(pieceMoveCheck(currentPiece, -1, 0) == true) {
             return true;
         }
         return false;
     }
 
     private boolean canMoveRight(Tetrimino currentPiece){
-        if(pieceMoveCheck(currentPiece, 0,1) == true) {
+        if(pieceMoveCheck(currentPiece, 1,0) == true) {
             return true;
         }
         return false;
     }
 
     public boolean canMoveDown(Tetrimino currentPiece) {
-        if(pieceMoveCheck(currentPiece, 1,0) == true) {
+        if(pieceMoveCheck(currentPiece, 0,1) == true) {
             return true;
         }
         return false;
