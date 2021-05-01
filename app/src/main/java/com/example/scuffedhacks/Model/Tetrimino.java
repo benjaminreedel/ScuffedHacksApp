@@ -71,70 +71,70 @@ public class Tetrimino {
             x2 = 5;
             x3 = 5;
             x4 = 5;
-            y1 = 16;
-            y2 = 15;
-            y3 = 14;
-            y4 = 13;
+            y1 = 0;
+            y2 = 1;
+            y3 = 2;
+            y4 = 3;
         } else if (pieceNum == 1) {
             //T-block
             x1 = 4;
             x2 = 5;
             x3 = 6;
             x4 = 5;
-            y1 = 16;
-            y2 = 16;
-            y3 = 16;
-            y4 = 15;
+            y1 = 0;
+            y2 = 0;
+            y3 = 0;
+            y4 = 1;
         } else if (pieceNum == 2) {
             //L-block
             x1 = 4;
             x2 = 4;
             x3 = 4;
             x4 = 5;
-            y1 = 16;
-            y2 = 15;
-            y3 = 14;
-            y4 = 14;
+            y1 = 0;
+            y2 = 1;
+            y3 = 2;
+            y4 = 2;
         } else if (pieceNum == 3) {
             //J-block
             x1 = 5;
             x2 = 5;
             x3 = 5;
             x4 = 4;
-            y1 = 16;
-            y2 = 15;
-            y3 = 14;
-            y4 = 14;
+            y1 = 0;
+            y2 = 1;
+            y3 = 2;
+            y4 = 2;
         } else if (pieceNum == 4) {
             //Box-block
             x1 = 4;
             x2 = 5;
             x3 = 4;
             x4 = 5;
-            y1 = 16;
-            y2 = 16;
-            y3 = 15;
-            y4 = 15;
+            y1 = 0;
+            y2 = 0;
+            y3 = 1;
+            y4 = 1;
         } else if (pieceNum == 5) {
             //Z-Block
             x1 = 5;
             x2 = 5;
             x3 = 4;
             x4 = 4;
-            y1 = 16;
-            y2 = 15;
-            y3 = 15;
-            y4 = 14;
+            y1 = 0;
+            y2 = 1;
+            y3 = 1;
+            y4 = 2;
         } else if (pieceNum == 6) {
             //S-block
             x1 = 4;
             x2 = 4;
             x3 = 5;
             x4 = 5;
-            y1 = 16;
-            y2 = 15;
-            y3 = 15;
-            y4 = 14;
+            y1 = 0;
+            y2 = 1;
+            y3 = 1;
+            y4 = 2;
         }
     }
 

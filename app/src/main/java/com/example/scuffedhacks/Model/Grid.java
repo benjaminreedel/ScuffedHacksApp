@@ -16,7 +16,8 @@ public class Grid {
 
     public Grid() {
         clearGrid();
-        //pieces.add(new Tetrimino(rand.nextInt(7)));
+        pieces.add(new Tetrimino(rand.nextInt(7)));
+        pieces.add(new Tetrimino(rand.nextInt(7)));
     }
 
     public void clearGrid() {
