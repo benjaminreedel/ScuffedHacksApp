@@ -1,14 +1,7 @@
 package com.example.scuffedhacks.Model;
 
 public class Tetrimino {
-    private int x1;
-    private int x2;
-    private int x3;
-    private int x4;
-    private int y1;
-    private int y2;
-    private int y3;
-    private int y4;
+    public int x1, x2, x3, x4, y1, y2, y3, y4;
     public Tetrimino(int pieceNum){
         pieceGenerator(pieceNum);
     }
@@ -23,6 +16,7 @@ public class Tetrimino {
         y4 = oldTetrimino.y4;
     }
     private void pieceGenerator(int pieceNum) {
+
         if (pieceNum == 0) {
             //Long-block
             x1 = 5;
