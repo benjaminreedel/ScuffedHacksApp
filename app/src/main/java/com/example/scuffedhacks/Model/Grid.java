@@ -44,10 +44,10 @@ public class Grid {
     }
 
     public void placeTetrimino(Tetrimino currentTetrimino) {
-        gridBoard[currentTetrimino.y1][currentTetrimino.x1] = 1;
-        gridBoard[currentTetrimino.y2][currentTetrimino.x2] = 1;
-        gridBoard[currentTetrimino.y3][currentTetrimino.x3] = 1;
-        gridBoard[currentTetrimino.y4][currentTetrimino.x4] = 1;
+        gridBoard[currentTetrimino.y1][currentTetrimino.x1] = currentTetrimino.color;
+        gridBoard[currentTetrimino.y2][currentTetrimino.x2] = currentTetrimino.color;
+        gridBoard[currentTetrimino.y3][currentTetrimino.x3] = currentTetrimino.color;
+        gridBoard[currentTetrimino.y4][currentTetrimino.x4] = currentTetrimino.color;
     }
 
     private void deletePiece(Tetrimino currentTetrimino) {

@@ -182,7 +182,7 @@ public class TetrisActivity extends AppCompatActivity {
 //                                gameGrid.clearRows();
 
                                     pieceList.remove(gameGrid.getCurrentPiece());
-                                    pieceList.add(new Tetrimino(random.nextInt(7) + 1));
+                                    pieceList.add(new Tetrimino(random.nextInt(7)));
 
                                     if (deletedRows > 0) {
                                         addscore(deletedRows);
@@ -237,9 +237,25 @@ public class TetrisActivity extends AppCompatActivity {
     private void updateGrid() {
         for (int row = 0; row < 16; row++) {
             for (int col = 0; col < 10; col++) {
-                if (gameGrid.getGridBoard()[row][col] == 1) {
+                if (gameGrid.getGridBoard()[row][col] > 0) {
                     ImageView spot = spots[row][col];
-                    spot.setImageResource(R.drawable.red);
+                    int tmp = gameGrid.getGridBoard()[row][col];
+                    if (tmp == 1) {
+                        spot.setImageResource(R.drawable.blue);
+                    } else if (tmp == 2) {
+                        spot.setImageResource(R.drawable.purple);
+                    } else if (tmp == 3) {
+                        spot.setImageResource(R.drawable.ska);
+                    } else if (tmp == 4) {
+                        spot.setImageResource(R.drawable.orange);
+                    } else if (tmp == 5) {
+                        spot.setImageResource(R.drawable.yellow);
+                    } else if (tmp == 6) {
+                        spot.setImageResource(R.drawable.red);
+                    } else {
+                        spot.setImageResource(R.drawable.green);
+                    }
+
                 } else {
                     ImageView spot = spots[row][col];
                     spot.setImageResource(R.drawable.filthy_square_vol_2);
@@ -247,17 +263,48 @@ public class TetrisActivity extends AppCompatActivity {
             }
         }
         Tetrimino current = gameGrid.getCurrentPiece();
-
         ImageView spot = spots[current.y1][current.x1];
-        spot.setImageResource(R.drawable.red);
-        spot = spots[current.y2][current.x2];
-        spot.setImageResource(R.drawable.red);
-        spot = spots[current.y3][current.x3];
-        spot.setImageResource(R.drawable.red);
-        spot = spots[current.y4][current.x4];
-        spot.setImageResource(R.drawable.red);
+        ImageView spot2 = spots[current.y2][current.x2];
+        ImageView spot3 = spots[current.y3][current.x3];
+        ImageView spot4 = spots[current.y4][current.x4];
 
-
+        int tmp = current.color;
+        if (tmp == 1) {
+            spot.setImageResource(R.drawable.blue);
+            spot2.setImageResource(R.drawable.blue);
+            spot3.setImageResource(R.drawable.blue);
+            spot4.setImageResource(R.drawable.blue);
+        } else if (tmp == 2) {
+            spot.setImageResource(R.drawable.purple);
+            spot2.setImageResource(R.drawable.purple);
+            spot3.setImageResource(R.drawable.purple);
+            spot4.setImageResource(R.drawable.purple);
+        } else if (tmp == 3) {
+            spot.setImageResource(R.drawable.ska);
+            spot2.setImageResource(R.drawable.ska);
+            spot3.setImageResource(R.drawable.ska);
+            spot4.setImageResource(R.drawable.ska);
+        } else if (tmp == 4) {
+            spot.setImageResource(R.drawable.orange);
+            spot2.setImageResource(R.drawable.orange);
+            spot3.setImageResource(R.drawable.orange);
+            spot4.setImageResource(R.drawable.orange);
+        } else if (tmp == 5) {
+            spot.setImageResource(R.drawable.yellow);
+            spot2.setImageResource(R.drawable.yellow);
+            spot3.setImageResource(R.drawable.yellow);
+            spot4.setImageResource(R.drawable.yellow);
+        } else if (tmp == 6) {
+            spot.setImageResource(R.drawable.red);
+            spot2.setImageResource(R.drawable.red);
+            spot3.setImageResource(R.drawable.red);
+            spot4.setImageResource(R.drawable.red);
+        } else {
+            spot.setImageResource(R.drawable.green);
+            spot2.setImageResource(R.drawable.green);
+            spot3.setImageResource(R.drawable.green);
+            spot4.setImageResource(R.drawable.green);
+        }
     }
 
 }

@@ -2,6 +2,7 @@ package com.example.scuffedhacks.Model;
 
 public class Tetrimino {
     public int x1, x2, x3, x4, y1, y2, y3, y4;
+    public int color;
     public Tetrimino(int pieceNum){
         // Constructor function that takes a number(0-6) and sets the values for a type of tetrimino
         pieceGenerator(pieceNum);
@@ -16,6 +17,7 @@ public class Tetrimino {
         y2 = oldTetrimino.y2;
         y3 = oldTetrimino.y3;
         y4 = oldTetrimino.y4;
+        color = oldTetrimino.color;
     }
 
     public void rotate() {
@@ -24,28 +26,28 @@ public class Tetrimino {
         int tmp_x2, tmp_y2;
         int tmp_x3, tmp_y3;
 
-        tmp_x1 = turnAroundX1(y2);
-        tmp_y1 = turnAroundY1(x2);
-        x2 = tmp_x1;
-        y2 = tmp_y1;
+        tmp_x1 = turnAroundX1(y1);
+        tmp_y1 = turnAroundY1(x1);
+        x1 = tmp_x1;
+        y1 = tmp_y1;
 
         tmp_x2 = turnAroundX1(y3);
-        tmp_y2 = turnAroundX1(x3);
+        tmp_y2 = turnAroundY1(x3);
         x3 = tmp_x2;
         y3 = tmp_y2;
 
         tmp_x3 = turnAroundX1(y4);
-        tmp_y3 = turnAroundX1(x4);
+        tmp_y3 = turnAroundY1(x4);
         x4 = tmp_x3;
         y4 = tmp_y3;
     }
 
     private int turnAroundX1(int y){
-        return x1 - y + y1;
+        return x2 - y + y2;
     }
 
     private int turnAroundY1(int x){
-        return y1 + x - x1;
+        return y2 + x - x2;
     }
 
 
@@ -75,6 +77,7 @@ public class Tetrimino {
             y2 = 1;
             y3 = 2;
             y4 = 3;
+            color = 1;
         } else if (pieceNum == 1) {
             //T-block
             x1 = 4;
@@ -85,6 +88,7 @@ public class Tetrimino {
             y2 = 0;
             y3 = 0;
             y4 = 1;
+            color = 2;
         } else if (pieceNum == 2) {
             //L-block
             x1 = 4;
@@ -95,6 +99,7 @@ public class Tetrimino {
             y2 = 1;
             y3 = 2;
             y4 = 2;
+            color = 3;
         } else if (pieceNum == 3) {
             //J-block
             x1 = 5;
@@ -105,6 +110,7 @@ public class Tetrimino {
             y2 = 1;
             y3 = 2;
             y4 = 2;
+            color = 4;
         } else if (pieceNum == 4) {
             //Box-block
             x1 = 4;
@@ -115,6 +121,7 @@ public class Tetrimino {
             y2 = 0;
             y3 = 1;
             y4 = 1;
+            color = 5;
         } else if (pieceNum == 5) {
             //Z-Block
             x1 = 5;
@@ -125,6 +132,7 @@ public class Tetrimino {
             y2 = 1;
             y3 = 1;
             y4 = 2;
+            color = 6;
         } else if (pieceNum == 6) {
             //S-block
             x1 = 4;
@@ -135,6 +143,7 @@ public class Tetrimino {
             y2 = 1;
             y3 = 1;
             y4 = 2;
+            color = 7;
         }
     }
 
