@@ -239,7 +239,7 @@ public class TetrisActivity extends AppCompatActivity {
     }
 
     private void randomGrid() {
-        for (int row = 8; row < 16; row++) {
+        for (int row = 10; row < 16; row++) {
             for (int col = 0; col < 10; col++) {
                 int value = random.nextInt(3);
                 ImageView spot = spots[row][col];
