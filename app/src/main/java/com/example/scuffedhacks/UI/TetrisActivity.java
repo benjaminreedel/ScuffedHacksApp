@@ -37,6 +37,7 @@ public class TetrisActivity extends AppCompatActivity {
     public boolean running = true;
     long tickrate;
     private int scoreTotal = 0;
+    private int slideBuffer = 0;
 
     private ImageButton rotateButton;
     private ImageButton rightButton;
@@ -164,37 +165,41 @@ public class TetrisActivity extends AppCompatActivity {
 
                     @Override
                     public void run() {
-
                         if(true ) {
                             gameGrid.moveDown(gameGrid.getCurrentPiece());
                             updateGrid();
 
                             if (gameGrid.canMoveDown(gameGrid.getCurrentPiece()) == false) {
-
-                                gameGrid.placeTetrimino(gameGrid.getCurrentPiece());
-                                int deletedRows = gameGrid.clearRows();
-//                                gameGrid.clearRows();
-
-                                pieceList.remove(gameGrid.getCurrentPiece());
-                                pieceList.add(new Tetrimino(random.nextInt(7) + 1));
-
-                                if (deletedRows> 0) {
-                                    addscore(deletedRows);
-                                }
-
-                                if (gameGrid.checkGameOver(gameGrid.getCurrentPiece())) {
-                                    timer.cancel();
-                                    pieceList.clear();
-                                    gameGrid.clearGrid();
-                                    //                                  Intent intent = new Intent(TetrisActivity.this, GameOverScreen.class);
-                                    Intent intent = new Intent(TetrisActivity.this, GameOverActivity.class);
-                                    finish();
-                                    startActivity(intent);
+                                if (slideBuffer < 3) {
+                                    slideBuffer++;
                                 } else {
 
-                                    timer.cancel();
-                                    timer = new Timer();
-                                    gameloop();
+                                    gameGrid.placeTetrimino(gameGrid.getCurrentPiece());
+                                    slideBuffer = 0;
+                                    int deletedRows = gameGrid.clearRows();
+//                                gameGrid.clearRows();
+
+                                    pieceList.remove(gameGrid.getCurrentPiece());
+                                    pieceList.add(new Tetrimino(random.nextInt(7) + 1));
+
+                                    if (deletedRows > 0) {
+                                        addscore(deletedRows);
+                                    }
+
+                                    if (gameGrid.checkGameOver(gameGrid.getCurrentPiece())) {
+                                        timer.cancel();
+                                        pieceList.clear();
+                                        gameGrid.clearGrid();
+                                        //                                  Intent intent = new Intent(TetrisActivity.this, GameOverScreen.class);
+                                        Intent intent = new Intent(TetrisActivity.this, GameOverActivity.class);
+                                        finish();
+                                        startActivity(intent);
+                                    } else {
+
+                                        timer.cancel();
+                                        timer = new Timer();
+                                        gameloop();
+                                    }
                                 }
 
                             }
@@ -208,23 +213,23 @@ public class TetrisActivity extends AppCompatActivity {
     }
 
     public void addscore(int lines) {
-
+    int value = data.getScore();
         switch (lines) {
             case 1:
-                scoreTotal += 40 / (tickrate/100);
+                data.setScore((int) (value + 40 / (tickrate/100))); ;
                 break;
             case 2:
-                scoreTotal += 100 / (tickrate/100);
+                data.setScore((int) (value + 100 / (tickrate/100)));
                 break;
             case 3:
-                scoreTotal += 300 / (tickrate/100);
+                data.setScore((int) (value + 300 / (tickrate/100)));
                 break;
             case 4:
-                scoreTotal += 1200 / (tickrate/100);
+                data.setScore((int) (value + 1200 / (tickrate/100)));
                 break;
         }
         TextView scoreText = (TextView) findViewById(R.id.txtScore);
-        scoreText.setText("Score: " + scoreTotal);
+        scoreText.setText("Score: " + data.getScore());
     }
 
     private void updateGrid() {

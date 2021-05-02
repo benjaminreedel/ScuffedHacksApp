@@ -2,6 +2,7 @@ package com.example.scuffedhacks.Model;
 
 public class OptionsData {
     private int difficulty;
+    private int score;
 
     // Singleton
     private static OptionsData instance;
@@ -19,6 +20,14 @@ public class OptionsData {
 
     public int getDifficulty() {
         return difficulty;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public void setDifficulty(int difficulty) {
