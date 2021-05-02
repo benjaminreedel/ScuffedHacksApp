@@ -2,6 +2,7 @@ package com.example.scuffedhacks.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.scuffedhacks.Model.Grid;
+import com.example.scuffedhacks.Model.OptionsData;
 import com.example.scuffedhacks.Model.Tetrimino;
 import com.example.scuffedhacks.Model.TetrisPlayer;
 import com.example.scuffedhacks.R;
@@ -27,12 +29,19 @@ import java.util.TimerTask;
 public class TetrisActivity extends AppCompatActivity {
     private Grid gameGrid;
     private ArrayList<Tetrimino> pieceList;
+    private OptionsData data;
     ImageView spots[][];
     private Timer timer = new Timer();
     private TetrisActivity tetrisActivity;
     private Random random = new Random();
     public boolean running = true;
-    long tickrate = 500;
+    long tickrate;
+    private int scoreTotal = 0;
+
+    private ImageButton rotateButton;
+    private ImageButton rightButton;
+    private ImageButton downButton;
+    private ImageButton leftButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,15 +52,59 @@ public class TetrisActivity extends AppCompatActivity {
         pieceList = gameGrid.getPieces();
         spots = new ImageView[16][10];
 
+        data = OptionsData.getInstance();
+        if (data.getDifficulty() == 1) {
+            tickrate = 500;
+        } else if (data.getDifficulty() == 2) {
+            tickrate = 250;
+        } else {
+            tickrate = 100;
+        }
+
         populateGrid();
         updateGrid();
 
-        ImageButton btnLoop = findViewById(R.id.btnRotate);
-        btnLoop.setOnClickListener(new View.OnClickListener() {
+        gameloop();
+
+//        ImageButton btnLoop = findViewById(R.id.btnRotate);
+//        btnLoop.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                gameloop();
+//
+//            }
+//        });
+
+        rotateButton = findViewById(R.id.btnRotate);
+        leftButton = findViewById(R.id.btnLeft);
+        rightButton = findViewById(R.id.btnRight);
+
+
+        rotateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                gameloop();
-
+                gameGrid.rotatePiece(gameGrid.getCurrentPiece());
+                updateGrid();
+            }
+        });
+        rightButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gameGrid.moveRight(gameGrid.getCurrentPiece());
+                updateGrid();
+            }
+        });
+//        downButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+////                gameGrid.move
+//            }
+//        });
+        leftButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gameGrid.moveLeft(gameGrid.getCurrentPiece());
+                updateGrid();
             }
         });
 
@@ -102,6 +155,7 @@ public class TetrisActivity extends AppCompatActivity {
     }
 
     public void gameloop() {
+
         timer.schedule(new TimerTask() {
 
             @Override
@@ -116,8 +170,11 @@ public class TetrisActivity extends AppCompatActivity {
                             updateGrid();
 
                             if (gameGrid.canMoveDown(gameGrid.getCurrentPiece()) == false) {
+
+                                gameGrid.placeTetrimino(gameGrid.getCurrentPiece());
                                 int deletedRows = gameGrid.clearRows();
-                                gameGrid.clearRows();
+//                                gameGrid.clearRows();
+
                                 pieceList.remove(gameGrid.getCurrentPiece());
                                 pieceList.add(new Tetrimino(random.nextInt(7) + 1));
 
@@ -125,11 +182,21 @@ public class TetrisActivity extends AppCompatActivity {
                                     addscore(deletedRows);
                                 }
 
-                                if(true) {
+                                if (gameGrid.checkGameOver(gameGrid.getCurrentPiece())) {
+                                    timer.cancel();
+                                    pieceList.clear();
+                                    gameGrid.clearGrid();
+                                    //                                  Intent intent = new Intent(TetrisActivity.this, GameOverScreen.class);
+                                    Intent intent = new Intent(TetrisActivity.this, MainActivity.class);
+                                    finish();
+                                    startActivity(intent);
+                                } else {
+
                                     timer.cancel();
                                     timer = new Timer();
                                     gameloop();
                                 }
+
                             }
 
                         }
@@ -140,23 +207,24 @@ public class TetrisActivity extends AppCompatActivity {
 
     }
 
-    public int addscore(int lines) {
-        int _score = 0;
+    public void addscore(int lines) {
+
         switch (lines) {
             case 1:
-                _score += 40;
+                scoreTotal += 40 / (tickrate/100);
                 break;
             case 2:
-                _score += 100;
+                scoreTotal += 100 / (tickrate/100);
                 break;
             case 3:
-                _score += 300;
+                scoreTotal += 300 / (tickrate/100);
                 break;
             case 4:
-                _score += 1200;
+                scoreTotal += 1200 / (tickrate/100);
                 break;
         }
-        return _score;
+        TextView scoreText = (TextView) findViewById(R.id.txtScore);
+        scoreText.setText("Score: " + scoreTotal);
     }
 
     private void updateGrid() {

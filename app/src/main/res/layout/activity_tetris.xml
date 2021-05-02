@@ -10,7 +10,7 @@
         android:id="@+id/txtScore"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Score: "
+        android:text="Score: 0"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -45,7 +45,7 @@
         app:srcCompat="@drawable/arrow_smaller" />
 
     <ImageButton
-        android:id="@+id/imageButton3"
+        android:id="@+id/btnLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:rotation="-90"
@@ -64,7 +64,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/btnRight"
         app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toEndOf="@+id/imageButton3"
+        app:layout_constraintStart_toEndOf="@+id/btnLeft"
         app:layout_constraintTop_toBottomOf="@+id/tableForTetris"
         app:layout_constraintVertical_bias="1.0"
         app:srcCompat="@drawable/rotate" />

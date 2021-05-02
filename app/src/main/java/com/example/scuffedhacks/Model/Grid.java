@@ -43,7 +43,7 @@ public class Grid {
         return pieces.get(pieces.size() - 1);
     }
 
-    private void placeTetrimino(Tetrimino currentTetrimino) {
+    public void placeTetrimino(Tetrimino currentTetrimino) {
         gridBoard[currentTetrimino.y1][currentTetrimino.x1] = 1;
         gridBoard[currentTetrimino.y2][currentTetrimino.x2] = 1;
         gridBoard[currentTetrimino.y3][currentTetrimino.x3] = 1;
@@ -81,7 +81,7 @@ public class Grid {
         // Does this copied piece stay within the boundaries
         for(Point p : tmpPieceCoordinates ) {
 
-            if(p.x < gridWidth && p.y >= 0 && p.y < gridHeight && gridBoard[p.y][p.x] == 0) {
+            if(p.x < gridWidth && p.x >= 0 && p.y >= 0 && p.y < gridHeight && gridBoard[p.y][p.x] == 0) {
                 tmp++;
             }
 
@@ -237,7 +237,7 @@ public class Grid {
     }
 
     public boolean checkGameOver(Tetrimino spielStein) {
-        if(canMoveDown(spielStein) == false && getMinXCoordinate(spielStein)<=1) {
+        if(canMoveDown(spielStein) == false) {
             return true;
         }
         return false;

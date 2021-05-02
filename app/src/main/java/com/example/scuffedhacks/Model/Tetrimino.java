@@ -41,11 +41,11 @@ public class Tetrimino {
     }
 
     private int turnAroundX1(int y){
-        return x1 + y - y1;
+        return x1 - y + y1;
     }
 
     private int turnAroundY1(int x){
-        return y1 - x + x1;
+        return y1 + x - x1;
     }
 
 
