@@ -2,6 +2,7 @@ package com.example.scuffedhacks.UI;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.media.MediaPlayer;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -24,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
 
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override
+            final MediaPlayer mp = MediaPlayer.create(this,R.sound.Tetriscuff);
+            mp.start();
             public void onClick(View v) {
                 finish();
                 Intent intent = new Intent(MainActivity.this, TetrisActivity.class);
