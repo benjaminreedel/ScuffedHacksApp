@@ -186,6 +186,8 @@ public class TetrisActivity extends AppCompatActivity {
 
                                     if (deletedRows > 0) {
                                         addscore(deletedRows);
+                                        randomGrid();
+                                        updateGrid();
                                     }
 
                                     if (gameGrid.checkGameOver(gameGrid.getCurrentPiece())) {
@@ -232,6 +234,37 @@ public class TetrisActivity extends AppCompatActivity {
         }
         TextView scoreText = (TextView) findViewById(R.id.txtScore);
         scoreText.setText("Score: " + data.getScore());
+    }
+
+    private void randomGrid() {
+        for (int row = 8; row < 16; row++) {
+            for (int col = 0; col < 10; col++) {
+                int value = random.nextInt(3);
+                ImageView spot = spots[row][col];
+                if (value == 1) {
+                    gameGrid.getGridBoard()[row][col] = 1;
+                    int tmp = random.nextInt(7);
+                    if (tmp == 1) {
+                        spot.setImageResource(R.drawable.blue);
+                    } else if (tmp == 2) {
+                        spot.setImageResource(R.drawable.purple);
+                    } else if (tmp == 3) {
+                        spot.setImageResource(R.drawable.ska);
+                    } else if (tmp == 4) {
+                        spot.setImageResource(R.drawable.orange);
+                    } else if (tmp == 5) {
+                        spot.setImageResource(R.drawable.yellow);
+                    } else if (tmp == 6) {
+                        spot.setImageResource(R.drawable.red);
+                    } else {
+                        spot.setImageResource(R.drawable.green);
+                    }
+                } else {
+                    gameGrid.getGridBoard()[row][col] = 0;
+                    spot.setImageResource(R.drawable.filthy_square_vol_2);
+                }
+            }
+        }
     }
 
     private void updateGrid() {
