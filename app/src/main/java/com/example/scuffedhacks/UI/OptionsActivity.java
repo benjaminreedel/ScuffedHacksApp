@@ -6,8 +6,10 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +27,19 @@ public class OptionsActivity extends AppCompatActivity {
 
         data = OptionsData.getInstance();
         createRadioButtons();
+
+        Switch switch1 = findViewById(R.id.switch1);
+
+        switch1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if (isChecked) {
+                    data.scuffed = true;
+                } else {
+                    data.scuffed = false;
+                }
+            }
+        });
 
     }
 

@@ -186,8 +186,10 @@ public class TetrisActivity extends AppCompatActivity {
 
                                     if (deletedRows > 0) {
                                         addscore(deletedRows);
-                                        randomGrid();
-                                        updateGrid();
+                                        if (data.scuffed) {
+                                            randomGrid();
+                                            updateGrid();
+                                        }
                                     }
 
                                     if (gameGrid.checkGameOver(gameGrid.getCurrentPiece())) {

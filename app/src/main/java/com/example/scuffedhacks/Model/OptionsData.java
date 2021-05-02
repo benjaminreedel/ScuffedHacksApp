@@ -3,6 +3,7 @@ package com.example.scuffedhacks.Model;
 public class OptionsData {
     private int difficulty;
     private int score;
+    public boolean scuffed = false;
 
     // Singleton
     private static OptionsData instance;
