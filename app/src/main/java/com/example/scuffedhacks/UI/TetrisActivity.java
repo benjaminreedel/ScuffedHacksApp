@@ -187,7 +187,7 @@ public class TetrisActivity extends AppCompatActivity {
                                     pieceList.clear();
                                     gameGrid.clearGrid();
                                     //                                  Intent intent = new Intent(TetrisActivity.this, GameOverScreen.class);
-                                    Intent intent = new Intent(TetrisActivity.this, MainActivity.class);
+                                    Intent intent = new Intent(TetrisActivity.this, GameOverActivity.class);
                                     finish();
                                     startActivity(intent);
                                 } else {
