@@ -159,20 +159,26 @@ public class Grid {
     }
 
     public void moveRight(Tetrimino currentPiece){
-        if(canMoveRight(currentPiece)==true) {
+        if(canMoveRight(currentPiece) == true) {
             movePiece(currentPiece, 1, 0);
         }
     }
 
     public  void moveLeft(Tetrimino currentPiece){
-        if(canMoveLeft(currentPiece)==true) {
+        if(canMoveLeft(currentPiece) == true) {
             movePiece(currentPiece, -1, 0);
         }
     }
 
     public  void moveDown(Tetrimino currentPiece) {
-        if(canMoveDown(currentPiece)==true) {
+        if(canMoveDown(currentPiece) == true) {
             movePiece(currentPiece, 0, 1);
+        }
+    }
+
+    public void hardDrop(Tetrimino currentPiece) {
+        while(canMoveDown(currentPiece) == true) {
+            moveDown(currentPiece);
         }
     }
 

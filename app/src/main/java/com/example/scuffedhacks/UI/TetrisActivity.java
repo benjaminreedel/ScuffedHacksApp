@@ -77,6 +77,7 @@ public class TetrisActivity extends AppCompatActivity {
 //        });
 
         rotateButton = findViewById(R.id.btnRotate);
+        downButton = findViewById(R.id.btnDrop);
         leftButton = findViewById(R.id.btnLeft);
         rightButton = findViewById(R.id.btnRight);
 
@@ -95,12 +96,13 @@ public class TetrisActivity extends AppCompatActivity {
                 updateGrid();
             }
         });
-//        downButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-////                gameGrid.move
-//            }
-//        });
+        downButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                gameGrid.hardDrop(gameGrid.getCurrentPiece());
+                updateGrid();
+            }
+        });
         leftButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
